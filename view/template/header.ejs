@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>NodeJs Router</title>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style type="text/css">
+        /* *********************************
+           Variables
+  ********************************** */
+        /* *********************************
+           Some Style Overrides on Bootstrap
+          ********************************** */
+        @import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+        body {
+            font-size: 18px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .navbar-inverse {
+            background: rgba(62, 195, 246, 0);
+            border-bottom: none;
+        }
+
+        .navbar-inverse .navbar-toggle {
+            border: 1px solid rgba(255, 255, 255, 0.7);
+        }
+
+        .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+            border-color: transparent;
+        }
+
+        @media (max-width: 767px) {
+            .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+                background: rgba(255, 255, 255, 0.75);
+            }
+        }
+
+        .navbar-inverse .navbar-nav > li > a {
+            color: black;
+        }
+
+        .navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+            color: #22F;
+        }
+
+        /* *********************************
+                   Toolbar Logo
+          ********************************** */
+        .small-logo-container {
+            padding-top: 50px;
+            height: 50px;
+            overflow: hidden;
+            position: absolute;
+        }
+
+        .small-logo {
+            color: white;
+            font-size: 2.5em;
+            padding-bottom: 2px;
+        }
+
+        /* *********************************
+                   Big Logo
+          ********************************** */
+        .big-logo-row {
+            background: gold;
+        }
+
+        .big-logo-row .big-logo-container {
+            padding-top: 50px;
+        }
+
+        .big-logo-row h1 {
+            font-size: 4em;
+            margin: 0;
+            padding: 0 0 15px 0;
+        }
+
+        @media (min-width: 400px) {
+            .big-logo-row h1 {
+                font-size: 4.5em;
+            }
+        }
+
+        @media (min-width: 440px) {
+            .big-logo-row h1 {
+                font-size: 5.5em;
+            }
+        }
+
+        @media (min-width: 500px) {
+            .big-logo-row h1 {
+                font-size: 6.5em;
+            }
+        }
+
+        @media (min-width: 630px) {
+            .big-logo-row h1 {
+                font-size: 7.5em;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .big-logo-row h1 {
+                font-size: 9em;
+                padding-bottom: 30px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .big-logo-row h1 {
+                font-size: 8em;
+            }
+        }
+
+        .footer-basic {
+            padding-top: 2em;
+
+            color: #4b4c4d;
+            border-top: solid 1px #efefef;
+            margin-top: 2em;
+            padding-bottom: 3em;
+            background: #f9f9f9;
+            background: -moz-linear-gradient(top, #f9f9f9 0%, #ffffff 100%);
+            background: -webkit-linear-gradient(top, #f9f9f9 0%, #ffffff 100%);
+            background: linear-gradient(to bottom, #f9f9f9 0%, #ffffff 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9f9f9', endColorstr='#ffffff', GradientType=0);
+        }
+
+        .footer-basic .social {
+            text-align: center;
+            padding-bottom: 25px;
+        }
+
+        .footer-basic ul {
+            padding: 0;
+            list-style: none;
+            text-align: center;
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        .footer-basic .copyright {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 13px;
+            color: #aaa;
+            margin-bottom: 0;
+        }
+
+        .social a {
+            margin-right: 1em;
+        }
+
+        .mt-2 {
+            margin-top: 2em;
+        }
+
+        .pt-2 {
+            padding-top: 2em;
+        }
+
+    </style>
+    <link rel="shortcut icon" type="image/x-icon" href="https://tahasoft.com/assets/img/favicon.ico">
+
+</head>
+<body>
+<!-- Fixed navbar -->
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="small-logo-container">
+                <a class="small-logo" href="#"></a>
+            </div>
+        </div>
+        <div class="navbar-collapse collapse">
+
+            <ul class="nav navbar-nav navbar-right navbar-links">
+                <li><a href="./">
+                        <i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
+                <li><a href="./shortener">
+                        <i class="fa fa-link" aria-hidden="true"></i> shortener</a></li>
+                <li><a href="./about">
+                        <i class="fa fa-info" aria-hidden="true"></i> about</a></li>
+                <li><a href="./contact">
+                        <i class="fa fa-phone" aria-hidden="true"></i> contact us</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+<div class="container-fluid big-logo-row">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 big-logo-container">
+                <img style="max-width:500px;" src="https://www.hackyourfuture.net/images/logo/logo-01.svg"/>
+
+            </div><!--/.col-xs-12 -->
+        </div><!--/.row -->
+    </div><!--/.container -->
+</div><!--/.container-fluid -->
+
+

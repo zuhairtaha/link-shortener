@@ -1,0 +1,26 @@
+<%- include('template/header'); -%>
+<div class="container">
+
+    <div class="row pt-2">
+        <!-- /.col-lg-6 -->
+        <div class="col-lg-12">
+            <form method="post" action="">
+                <h2><i class="fa fa-link" aria-hidden="true"></i> URL Shortener</h2>
+                <div class="input-group input-group-lg">
+                    <input type="text" class="form-control" name = "longUrl" id="longUrl" placeholder="Paste a link to shorten it">
+                    <span class="input-group-btn">
+                        <button class="btn btn-danger" type="submit">
+                           <i class="fa fa-magic" aria-hidden="true"></i> SHORTEN</button>
+                    </span>
+                </div><!-- /input-group -->
+            </form>
+        </div><!-- /.col-lg-6 -->
+    </div><!-- /.row -->
+    <div class="row pt-2">
+        <p><a target="_blank" class="btn btn-default" href="./links.json">
+                <i class="fa fa-globe" aria-hidden="true"></i> links.json</a></p>
+        <p>Get the most out of your social and online marketing efforts. Own, understand
+            and activate your best audience through the power of the link with Bitly Enterprise.</p>
+    </div>
+</div><!--/.container -->
+<%- include('template/footer'); -%>

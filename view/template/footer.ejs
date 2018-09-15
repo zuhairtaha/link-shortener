@@ -1,0 +1,78 @@
+<div class="footer-basic">
+    <footer>
+        <div class="social">
+            <a href="#"><i class="fa fa-2x fa-instagram" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-2x fa-facebook" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-2x fa-twitter" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-2x fa-youtube" aria-hidden="true"></i></a></div>
+        <ul class="list-inline">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Terms</a></li>
+        </ul>
+        <p class="copyright">HackYourFuture © 2018</p>
+    </footer>
+</div>
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script>
+    var navbarHeight = $('.navbar').height();
+
+    $('.navbar-links li a').each(function () {
+        const href = $(this).attr('href');
+        if (document.URL.includes(href.replace('.', '')) && href.length > 2)
+
+            $(this).parent().addClass('active');
+    })
+
+    $(window).scroll(function () {
+
+
+        var navbarColor = "62,195,246";//color attr for rgba
+        var smallLogoHeight = $('.small-logo').height();
+        var bigLogoHeight = $('.big-logo').height();
+
+
+        var smallLogoEndPos = 0;
+        var smallSpeed = (smallLogoHeight / bigLogoHeight);
+
+        var ySmall = ($(window).scrollTop() * smallSpeed);
+
+        var smallPadding = navbarHeight - ySmall;
+        if (smallPadding > navbarHeight) {
+            smallPadding = navbarHeight;
+        }
+        if (smallPadding < smallLogoEndPos) {
+            smallPadding = smallLogoEndPos;
+        }
+        if (smallPadding < 0) {
+            smallPadding = 0;
+        }
+
+        $('.small-logo-container ').css({"padding-top": smallPadding});
+
+        var navOpacity = ySmall / smallLogoHeight;
+        if (navOpacity > 1) {
+            navOpacity = 1;
+        }
+        if (navOpacity < 0) {
+            navOpacity = 0;
+        }
+        var navBackColor = 'rgba(' + navbarColor + ',' + navOpacity + ')';
+        $('.navbar').css({"background-color": navBackColor});
+
+        var shadowOpacity = navOpacity * 0.4;
+        if (ySmall > 1) {
+            $('.navbar').css({"box-shadow": "0 2px 3px rgba(0,0,0," + shadowOpacity + ")"});
+        } else {
+            $('.navbar').css({"box-shadow": "none"});
+        }
+
+
+    });
+</script>
+</body>
+</html>
